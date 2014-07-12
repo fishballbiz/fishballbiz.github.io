@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="mainModule">
+  <head>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+  </head>
+  <body ng-controller="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <ul class="list-unstyled">
+            <li ng-repeat="(num, checked) in numbers">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-checked="checked" ng-model="numbers[num]">{{ num }}
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <div ng-repeat="(num, checked) in numbers" ng-show="checked" class="label label-primary">{{ num }}</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = angular.module("mainModule", []);
+      app.controller("main", ["$scope", function($scope) {
+        $scope.numbers = {
+          1: false,
+          2: true,
+          3: false,
+          4: false,
+          5: false,
+          6: false,
+          7: false,
+        };
+        console.log("initialized");
+      }]);
+    </script>
+  </body>
+</html>
