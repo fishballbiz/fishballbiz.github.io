@@ -9,20 +9,19 @@ html(ng-app="mainModule")
     .container
       .row
         .col-sm-6
-          ul.list-unstyled
+          ul.list-unstyled.btn-group
             li(ng-repeat="(num, checked) in numbers")
               .checkbox
-                label
-                  input(type="checkbox", ng-checked="checked",
-                      ng-model="numbers[num]")
+                label.btn(btn-checkbox,ng-model="numbers[num]",
+                  ng-class="{true: 'btn-info', false:'btn-default'}[checked]")
                   | {{ num }}
         .col-sm-6
-          .label.label-primary(ng-repeat="(num, checked) in numbers",
+          span.label.label-primary(ng-repeat="(num, checked) in numbers",
               ng-show="checked")
               | {{ num }}
 
     script.
-      var app = angular.module("mainModule", []);
+      var app = angular.module("mainModule", ["ui.bootstrap"]);
       app.controller("main", ["$scope", function($scope) {
         $scope.numbers = {
           1: false,
