@@ -8,17 +8,16 @@ html(ng-app="mainModule")
   body(ng-controller="main")
     .container
       .row
-        .col-sm-6
+        .col-sm-3
           ul.list-unstyled.btn-group
             li(ng-repeat="(num, checked) in numbers")
               .checkbox
                 label.btn(btn-checkbox,ng-model="numbers[num]",
                   ng-class="{true: 'btn-info', false:'btn-default'}[checked]")
                   | {{ num }}
-        .col-sm-6
-          span.label.label-primary(ng-repeat="(num, checked) in numbers",
+        .col-sm-1(ng-repeat="(num, checked) in numbers",
               ng-show="checked")
-              | {{ num }}
+            img(ng-src="{{images[num]}}", width="100px")
 
     script.
       var app = angular.module("mainModule", ["ui.bootstrap"]);
@@ -32,5 +31,15 @@ html(ng-app="mainModule")
           6: false,
           7: false,
         };
+        $scope.images = {
+          1: "http://toons.artie.com/alphabet/numbers/arg-1-50-trans.gif",
+          2:"http://i40.photobucket.com/albums/e229/4Dru/Pink/pretty_pink_alphabet/2.gif",
+          3:"http://gifs.gifmania.co.il/Animated-Gifs-Animated-Letters/Animations-Animated-Numbers/Images-Numbers-Three/number-three60.gif",
+          4:"http://image.blingee.com/images18/content/output/000/000/000/73d/698496464_166546.gif",
+          5: "http://www.davidgunnell.me/siteimages/number%205.gif",
+          6:"http://i671.photobucket.com/albums/vv73/masterright31/howtowriteinjapanese/kanji/how%20to%20write%20numbers%20in%20japanese/-order-28.gif",
+          7:"http://gifs.gifmania.co.il/Animated-Gifs-Animated-Letters/Animations-Various-Letters/Images-Container-kicking-Letters/kicking-number-7.gif"
+        }
+
         console.log("initialized");
       }]);
